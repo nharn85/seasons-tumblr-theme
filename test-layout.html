@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>Test Layout</title>
+	<style>
+		html, body {
+			padding: 0;
+			margin: 0;
+		}
+
+		.container {
+			position: relative;
+		}
+		nav {
+			position: fixed;
+			left: 0px;
+			width: 360px;
+			text-align: center;
+			margin: 20px;
+		}
+		section.posts {
+			/*margin-left: 400px;*/
+			margin: 20px auto 0 400px;
+			/*max-width: calc(100% - 400px);*/
+		}
+		footer {
+			position: fixed;
+			bottom: 0;
+			left: 0;
+			height: 70px;
+			background-color: #eee;
+			width: 100%;
+		}
+		body {
+			margin-bottom: 120px;
+		}
+
+		#loader { display: block; position: absolute; left: 100px; top: 0; }
+
+		/* Post Styles */
+
+		/* Grid Styles */
+		.grid-item {
+			position: relative;
+			color: #333;
+			width: 200px;
+			border: 3px solid #D64078;
+			background: white;
+			padding: 10px;
+		}
+
+		.grid-item img {
+			float: left;
+			padding-right: 10px;
+			width: 100%;
+		}
+
+		.grid-item--width2 { width: 250px; }
+		/*.grid-item--width3 { width: 530px; }*/
+	</style>
+</head>
+<body>
+	<div class="container">
+		<nav id="sidebar" class="sidebar">
+			<header>
+				<h1>Seasons Tumblr Theme</h1>
+			</header>
+			<h2>Filter</h2>
+			<select id="select-filter">
+				<option data-filter="*">Show All </option>
+				<option data-filter=".text">Text</option>
+				<option data-filter=".photo">Photo</option>
+				<option data-filter=".panorama">Panorama</option>
+				<option data-filter=".photoset">Photoset</option>
+				<option data-filter=".quote">Quote</option>
+				<option data-filter=".link">Link</option>
+				<option data-filter=".chat">Chat</option>
+				<option data-filter=".video">Video</option>
+				<option data-filter=".audio">Quote</option>
+			</select>
+
+			<h2>Colors</h2>
+			<ul id="colors"></ul>
+
+			<a href="#">&#171; Previous</a>
+			<a href="#">Next &#187;</a>
+			<hr>
+			<a href="#">Archive</a>
+		</nav>
+		<section class="posts grid">
+			<section class="post grid-item text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+			</section>
+			<section class="post grid-item grid-item--width2 photo quote">
+				<img src="http://66.media.tumblr.com/d54f7058b6f78c8ddb3d8f6a5ed20797/tumblr_ocmh4x4PlX1vezgj7o1_1280.jpg">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat.
+				</p>
+				</section>
+				<section class="post grid-item grid-item--width3 text">
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</section>
+				<section class="post grid-item photo">
+					<img src="http://lorempixel.com/g/160/200/cats">
+				</section>
+					<section class="post grid-item quote">"Nevermore" <cite>The Raven</cite></section>
+					<section class="post grid-item photo">
+						<img src="http://lorempixel.com/g/160/250/city">
+					</section>
+					<section class="post grid-item text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat.
+					</section>
+					<section class="post grid-item grid-item--width2 photo">
+						<img src="http://lorempixel.com/g/160/250/fashion">
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+							quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+							consequat.</p>
+						</section>
+						<section class="post grid-item grid-item--width3 text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+							quis nostrud Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+							quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+							consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+							cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+							proident, sunt in culpa qui officia deserunt mollit anim id est laborum. exercitation ullamco laboris nisi ut aliquip ex ea commodo
+							consequat.
+						</section>
+						<section class="post grid-item text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+							quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+							consequat.
+						</section>
+						<section class="post grid-item photo">
+							<img src="http://lorempixel.com/g/160/250/nightlife">
+						</section>
+					</section>
+					<footer>Copy junk</footer>
+				</div>
+
+				<!-- === Scripts === -->
+				<!--jQuery-->
+				<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+
+
+				<!-- Isotope -->
+				<script type="text/javascript" src="http://npmcdn.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
+				<!-- Packery -->
+				<script type="text/javascript" src="http://npmcdn.com/isotope-packery@2/packery-mode.pkgd.js"></script>
+				<!-- imagesLoaded -->
+				<script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
+				<!-- Vibrant JS -->
+				<script type="text/javascript" src="vibrant.js"></script>
+
+				<script>
+				$(document).ready(function(){
+					$('body').hide();
+					var img = document.createElement('img');
+					img.setAttribute('src', 'images/fall-bg-4.jpeg');
+					$('#colors').prepend('<img style="width: 150px" src="'+img.src+'">');
+					img.addEventListener('load', function() {
+						debugger;
+				    var vibrant = new Vibrant(img);
+				    var swatches = vibrant.swatches();
+				    for (var swatch in swatches) {
+				    	debugger;
+				    	if (swatches.hasOwnProperty(swatch) && swatches[swatch]){
+								var html = '<li class="color" style="background-color:'+swatches[swatch].getHex()+'">'+swatch+'</li>';
+								$('#colors').append(html);
+				    	}
+
+				    	if (swatches[swatch]){
+				    		$('body').css('background', swatches['LightVibrant'].getHex());
+				    		$('.post').css('border-color', swatches['Muted'].getHex());
+				    		$('footer').css('background', swatches['DarkMuted'].getHex());
+				    	}
+				    }
+				    $('body').fadeIn();
+					});
+
+					var $grid = $('.grid').isotope({
+						layoutMode: 'packery',
+						itemSelector: '.grid-item',
+						packery: {
+						gutter: 10
+						}
+					});
+
+					// layout Packery after each image loads
+					$grid.imagesLoaded().progress( function() {
+						$grid.isotope();
+					});
+
+					$('#select-filter').on('change', function() {
+						var filterValue = $("#select-filter :selected").attr('data-filter'); // The value of the selected option
+						$grid.isotope({ filter: filterValue });
+					});
+				});
+				</script>
+			</body>
+			</html>

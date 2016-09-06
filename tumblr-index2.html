@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{MobileAppHeaders}
+	<meta charset="utf-8">
+	<title>{Title}{block:SearchPage} ({lang:Search results for SearchQuery}){/block:SearchPage}{block:PermalinkPage}{block:PostSummary} — {PostSummary}{/block:PostSummary}{/block:PermalinkPage}</title>
+	{block:Description}
+	<meta name="description" content="{MetaDescription}">
+	{/block:Description}
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="theme-color" content="#35465D">
+	 <link rel="shortcut icon" href="{Favicon}">
+	 <link rel="apple-touch-icon-precomposed" href="{PortraitURL-128}">
+	 <link rel="alternate" type="application/rss+xml" href="{RSS}">
+
+	<!--Normalize & Other Tumblr things-->
+	<link rel="stylesheet" href="http://static.tumblr.com/27gzhx7/HGHobgabe/main-min.css">
+
+	<!-- Custom CSS -->
+	<!--<link rel="stylesheet" href="http://static.tumblr.com/kp2nvan/xcrocwu03/custom.css">-->
+	<style>
+	    * {
+          -webkit-box-sizing: border-box;
+             -moz-box-sizing: border-box;
+                  box-sizing: border-box;
+        }
+
+	    html, body {
+			padding: 0;
+			margin: 0;
+		}
+
+		.container {
+			position: relative;
+		}
+		nav {
+			position: fixed;
+			left: 0px;
+			width: 360px;
+			text-align: center;
+			margin: 20px;
+		}
+		section.posts {
+			/*margin-left: 400px;*/
+			margin: 20px auto 0 400px;
+			/*max-width: calc(100% - 400px);*/
+		}
+		footer {
+			position: fixed;
+			bottom: 0;
+			left: 0;
+			height: 70px;
+			background-color: #eee;
+			width: 100%;
+		}
+		body {
+			margin-bottom: 120px;
+		}
+
+		/* Post Styles */
+
+		/* Grid Styles */
+		.grid-item {
+			position: relative;
+			color: #333;
+			width: 200px;
+			border: 3px solid #D64078;
+			background: white;
+			padding: 10px;
+		}
+
+		.grid-item img {
+			float: left;
+			padding-right: 10px;
+		}
+
+		.grid-item--width2 { width: 250px; }
+		/*.grid-item--width3 { width: 530px; }*/
+
+	    {CustomCSS}
+	</style>
+</head>
+<body>
+
+	<div class="container">
+		<nav id="sidebar" class="sidebar">
+        <header>
+            <h1>{Title}</h1>
+            {block:Description}
+                <p id="description">{Description}</p>
+            {/block:Description}
+        </header>
+			<h2>Filter</h2>
+			<select id="select-filter">
+				<option data-filter="*">Show All </option>
+				<option data-filter=".text">Text</option>
+				<option data-filter=".photo">Photo</option>
+				<option data-filter=".panorama">Panorama</option>
+				<option data-filter=".photoset">Photoset</option>
+				<option data-filter=".quote">Quote</option>
+				<option data-filter=".link">Link</option>
+				<option data-filter=".chat">Chat</option>
+				<option data-filter=".video">Video</option>
+				<option data-filter=".audio">Quote</option>
+			</select>
+
+			<div>
+                {block:Pagination}{block:PreviousPage}
+                    <a href="{PreviousPage}">Previous</a>
+                {/block:PreviousPage}{block:JumpPagination length="5"}{block:CurrentPage}
+                        <span class="current_page">{PageNumber}</span>
+                    {/block:CurrentPage}{block:JumpPage}
+                        <a class="jump_page" href="{URL}">{PageNumber}</a>
+                    {/block:JumpPage}{/block:JumpPagination}{block:NextPage}
+                    <a href="{NextPage}">Next</a>
+                {/block:NextPage}{/block:Pagination}
+			</div>
+		</nav>
+		<section id="posts" class="posts grid">
+		{block:Posts}
+			<!-- Text Post -->
+			{block:Text}
+                <div class="grid-item grid-item--width3 post {PostType}">
+                    {block:Title}
+                        <h3><a href="{Permalink}">{Title}</a></h3>
+                    {/block:Title}{Body}
+                </div>
+            {/block:Text}
+			<!-- Photo Post -->
+			{block:Photo}
+                <div class="grid-item post {PostType}">
+                    <img src="{PhotoURL-500}" alt="{PhotoAlt}"/>
+
+                    {block:Caption}
+                        <div class="caption">{Caption}</div>
+                    {/block:Caption}
+                </div>
+            {/block:Photo}
+			<!-- Panorama Post -->
+			{block:Panorama}
+                <div class="grid-item grid-item--width3 post {PostType}">
+                    {LinkOpenTag}
+                        <img src="{PhotoURL-Panorama}" alt="{PhotoAlt}"/>
+                    {LinkCloseTag}{block:Caption}
+                        <div class="caption">{Caption}</div>
+                    {/block:Caption}
+                </div>
+            {/block:Panorama}
+			<!-- Photoset Post -->
+			{block:Photoset}
+                <div class="grid-item post {PostType}">
+                    {Photoset-500}{block:Caption}
+                        <div class="caption">{Caption}</div>
+                    {/block:Caption}
+                </li>
+            {/block:Photoset}
+			<!-- Quote Post -->
+			{block:Quote}
+                <div class="grid-item post {PostType}">
+                    "{Quote}"
+
+                    {block:Source}
+                        <div class="source">{Source}</div>
+                    {/block:Source}
+                </div>
+            {/block:Quote}
+			<!-- Link Post -->
+			{block:Link}
+                <div class="grid-item post {PostType}">
+                    <a href="{URL}" class="link" {Target}>{Name}</a>
+
+                    {block:Description}
+                        <div class="description">{Description}</div>
+                    {/block:Description}
+                </div>
+            {/block:Link}
+			<!-- Chat Post -->
+			{block:Chat}
+                <div class="grid-item grid-item--width3 post {PostType}">
+                    {block:Title}
+                        <h3><a href="{Permalink}">{Title}</a></h3>
+                    {/block:Title}
+
+                    <ul class="chat">
+                        {block:Lines}
+                            <li class="{Alt} user_{UserNumber}">
+                                {block:Label}
+                                    <span class="label">{Label}</span>
+                                {/block:Label}{Line}
+                            </li>
+                        {/block:Lines}
+                    </ul>
+                </div>
+            {/block:Chat}
+			<!-- Video Post -->
+			{block:Video}
+                <div class="grid-item grid-item--width2 post {PostType}">
+                    {Video-500}{block:Caption}
+                        <div class="caption">{Caption}</div>
+                    {/block:Caption}
+                </li>
+            {/block:Video}
+			<!-- Audio Post -->
+			{block:Audio}
+                <div class="grid-item grid-item--width2 post {PostType}">
+                    {AudioEmbed}{block:Caption}
+                        <div class="caption">{Caption}</div>
+                    {/block:Caption}
+                </div>
+            {/block:Audio}
+        {/block:Posts}
+		</section>
+	</div>
+
+	<!--<footer id="footer">-->
+	<!--	<p>&copy;{CopyrightYears} NMD</p>-->
+	<!--</footer>-->
+
+	<!-- === Scripts === -->
+				<!--jQuery-->
+				<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+				<!-- Isotope -->
+				<script type="text/javascript" src="http://npmcdn.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
+				<!-- Packery -->
+				<script type="text/javascript" src="http://npmcdn.com/isotope-packery@2/packery-mode.pkgd.js"></script>
+				<!-- imagesLoaded -->
+				<script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
+				<script>
+				$(document).ready(function(){
+					var $grid = $('.grid').isotope({
+						layoutMode: 'packery',
+						itemSelector: '.grid-item',
+						packery: {
+						gutter: 10
+						}
+					});
+
+					// layout Packery after each image loads
+					$grid.imagesLoaded().progress( function() {
+						$grid.isotope();
+					});
+
+					$('#select-filter').on('change', function() {
+						// debugger;
+						var filterValue = $("#select-filter :selected").attr('data-filter'); // The value of the selected option
+						$grid.isotope({ filter: filterValue });
+					});
+
+					// $('#filters').on( 'click', 'button', function() {
+					// 	var filterValue = $( this ).attr('data-filter');
+					// 	$grid.isotope({ filter: filterValue });
+					// });
+
+				});
+				</script>
+</body>
+</html>
